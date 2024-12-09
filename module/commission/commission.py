@@ -28,9 +28,6 @@ COMMISSION_SWITCH.add_status('daily', COMMISSION_DAILY)
 COMMISSION_SWITCH.add_status('urgent', COMMISSION_URGENT)
 COMMISSION_SCROLL = Scroll(COMMISSION_SCROLL_AREA, color=(247, 211, 66), name='COMMISSION_SCROLL')
 
-# threshold for current selected commision to be correct
-COMMISSION_NAME_MATCH_RATE = 0.95
-
 def lines_detect(image):
     """
     Args:
@@ -95,7 +92,7 @@ class RewardCommission(UI, InfoHandler):
             return False
         return a.status == desired_stat and b.status == desired_stat
 
-    def filter_commissions(self, commissions):
+    def filter_same_commissions(self, commissions):
         ret = []
         for a in commissions:
             for b in ret:
@@ -300,7 +297,7 @@ class RewardCommission(UI, InfoHandler):
                 break
 
         self.device.click_record_clear()
-        return self.filter_commissions(commission)
+        return self.filter_same_commissions(commission)
 
     def _commission_scan_all(self):
         """
