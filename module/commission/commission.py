@@ -77,6 +77,35 @@ class RewardCommission(UI, InfoHandler):
 
         return SelectedGrids(commission)
 
+    # The Roman number has higher change of misidentification
+    # so we determine whether two are same entry by other fields
+    def is_same_commision(self, a, b, desired_stat):
+        if str(a) == str(b):
+            return True
+        attrs = (
+            'genre_str', 'category_str', 'name',
+            'duration_hour', 'duration_hm'
+        )
+        for attr in attrs:
+            if getattr(a, attr) != getattr(b, attr):
+                return False
+        if abs(a.duration - b.duration) > timedelta(seconds=3):
+            return False
+        return a.status == desired_stat and b.status == desired_stat
+
+    def filter_commissions(self, commissions):
+        ret = []
+        for a in commissions:
+            for b in ret:
+                if a == b:
+                    continue
+                if self.is_same_commision(a, b, 'running'):
+                    logger.info(f"Ignoring probably same commissions: `{a}` `{b}`")
+                    break
+            else:
+                ret.append(a)
+        return SelectedGrids(ret)
+
     def commission_detect(self, trial=1, area=None, skip_first_screenshot=True):
         """
         Args:
@@ -269,7 +298,7 @@ class RewardCommission(UI, InfoHandler):
                 break
 
         self.device.click_record_clear()
-        return commission
+        return self.filter_commissions(commission)
 
     def _commission_scan_all(self):
         """
@@ -363,8 +392,7 @@ class RewardCommission(UI, InfoHandler):
                 raise GameStuckError('Triggered commission list flashing bug')
 
             # Click
-            if self.match_template_color(COMMISSION_START, offset=(5, 20), interval=7):
-                self.device.click(COMMISSION_START)
+            if self.appear_then_click(COMMISSION_START, offset=(5, 20), interval=7):
                 self.interval_reset(COMMISSION_ADVICE)
                 comm_timer.reset()
                 continue
@@ -386,10 +414,10 @@ class RewardCommission(UI, InfoHandler):
                     current.call('convert_to_night')  # Convert extra commission to night
                 if current.count >= 1:
                     current = current[0]
-                    if current == comm:
-                        logger.info('Selected to the correct commission')
+                    if self.is_same_commision(current, comm, 'pending'):
+                        logger.info(f'Selected to the correct commission')
                     else:
-                        logger.warning('Selected to the wrong commission')
+                        logger.warning(f'Selected to the wrong commission, wanted `{comm}` but got `{current}`')
                         return False
                 else:
                     logger.warning('No selected commission detected, assuming correct')
@@ -431,8 +459,10 @@ class RewardCommission(UI, InfoHandler):
                 # In different scans, they have the same information, but have different locations.
                 current = None
                 for new_comm in new:
-                    if new_comm == comm:
+                    if self.is_same_commision(new_comm, comm, 'pending'):
+                        logger.info(f'Selecting commission {new_comm}')
                         current = new_comm
+                        break
                 if current is not None:
                     if self._commission_start_click(current, is_urgent=is_urgent):
                         self.device.click_record_clear()
