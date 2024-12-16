@@ -193,6 +193,7 @@ class Updater(DeployConfig, GitManager, PipManager):
         return super().pip_install()
 
     def update(self):
+        return
         logger.hr("Run update")
         try:
             self.git_install()
@@ -202,6 +203,7 @@ class Updater(DeployConfig, GitManager, PipManager):
         return True
 
     def run_update(self):
+        return
         if self.state not in ("failed", 0, 1):
             return
         self._start_update()
