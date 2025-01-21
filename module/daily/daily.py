@@ -1,5 +1,5 @@
 import numpy as np
-
+from collections import defaultdict
 from module.base.utils import get_color
 from module.combat.assets import BATTLE_PREPARATION
 from module.combat.combat import Combat
@@ -19,12 +19,13 @@ class Daily(Combat, DailyEquipment):
     daily_current: int
     daily_checked: list
     emergency_module_development = False
-
+    ACTIVE_THRESHOLD = defaultdict(lambda: 30)
+    ACTIVE_THRESHOLD[6] = 9
     def is_active(self):
         color = get_color(image=self.device.image, area=DAILY_ACTIVE.area)
         color = np.array(color).astype(float)
         color = (np.max(color) + np.min(color)) / 2
-        active = color > 30
+        active = color > self.ACTIVE_THRESHOLD[self.daily_current]
         if active:
             logger.attr(f'Daily_{self.daily_current}', 'active')
         else:
