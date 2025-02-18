@@ -1,4 +1,2 @@
-git checkout master
-git pull
-git checkout compeador/homebrew
-git merge master
+git fetch origin
+git rebase origin/master
