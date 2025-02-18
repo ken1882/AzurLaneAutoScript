@@ -2,6 +2,7 @@ from module.guild.lobby import GuildLobby
 from module.guild.logistics import GuildLogistics
 from module.guild.operations import GuildOperations
 from module.ui.page import page_guild, page_main
+from datetime import datetime
 
 
 class RewardGuild(GuildLobby, GuildLogistics, GuildOperations):
@@ -35,9 +36,12 @@ class RewardGuild(GuildLobby, GuildLogistics, GuildOperations):
             success &= self.guild_operations()
 
         self.ui_goto(page_main)
-
+        now = datetime.now()
         # Scheduler
         if success:
-            self.config.task_delay(server_update=True)
+            if self.config.GuildOperation_Enable and now.day < 21:
+                self.config.task_delay(minute=60)
+            else:
+                self.config.task_delay(server_update=True)
         else:
             self.config.task_delay(success=False, server_update=True)
