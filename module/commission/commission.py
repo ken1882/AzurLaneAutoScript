@@ -83,7 +83,7 @@ class RewardCommission(UI, InfoHandler):
         if str(a) == str(b):
             return True
         attrs = (
-            'genre_str', 'category_str', 'name',
+            'category_str',
             'duration_hour', 'duration_hm'
         )
         for attr in attrs:
