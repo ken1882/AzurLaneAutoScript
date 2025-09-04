@@ -372,7 +372,7 @@ class ManualConfig:
     module.shop
     """
     # For dev purpose, auto extract new item templates
-    SHOP_EXTRACT_TEMPLATE = False
+    SHOP_EXTRACT_TEMPLATE = True
 
     """
     module.war_archives
