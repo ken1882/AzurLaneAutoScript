@@ -1631,6 +1631,34 @@
       "Storage": {}
     }
   },
+  "IslandPostManage": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "IslandPostManage",
+      "SuccessInterval": 0,
+      "FailureInterval": 120,
+      "ServerUpdate": "00:00"
+    },
+    "IslandMining": {
+      "Slot_1": "disabled",
+      "Slot_2": "disabled",
+      "Slot_3": "disabled",
+      "Slot_4": "disabled"
+    },
+    "IslandLumbering": {
+      "Slot_1": "disabled",
+      "Slot_2": "disabled",
+      "Slot_3": "disabled",
+      "Slot_4": "disabled"
+    },
+    "IslandRanch": {
+      "Ranch": "disabled"
+    },
+    "Storage": {
+      "Storage": {}
+    }
+  },
   "OpsiGeneral": {
     "OpsiGeneral": {
       "UseLogger": true,

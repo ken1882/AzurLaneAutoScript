@@ -194,6 +194,10 @@
       "name": "宿舍计划",
       "help": ""
     },
+    "IslandPostManage": {
+      "name": "离岛配置管理",
+      "help": ""
+    },
     "OpsiGeneral": {
       "name": "通用设置",
       "help": ""
@@ -2080,6 +2084,70 @@
       "noshiro": "能代",
       "sirius": "天狼星",
       "new_jersey": "新泽西"
+    }
+  },
+  "_anchors": {
+    "_info": {
+      "name": "_anchors._info.name",
+      "help": "_anchors._info.help"
+    },
+    "mining_options": {
+      "name": "_anchors.mining_options.name",
+      "help": "_anchors.mining_options.help"
+    },
+    "lumbering_options": {
+      "name": "_anchors.lumbering_options.name",
+      "help": "_anchors.lumbering_options.help"
+    }
+  },
+  "IslandMining": {
+    "_info": {
+      "name": "積岩礦山",
+      "help": ""
+    },
+    "Slot_1": {
+      "name": "配置位#1",
+      "help": "",
+      "disabled": "停用",
+      "coal": "煤炭",
+      "copper": "銅",
+      "aluminum": "鋁"
+    },
+    "Slot_2": {
+      "name": "配置位#2",
+      "help": "",
+      "disabled": "停用",
+      "coal": "煤炭",
+      "copper": "銅",
+      "aluminum": "鋁"
+    },
+    "Slot_3": {
+      "name": "配置位#3",
+      "help": "",
+      "disabled": "停用",
+      "coal": "煤炭",
+      "copper": "銅",
+      "aluminum": "鋁"
+    },
+    "Slot_4": {
+      "name": "配置位#4",
+      "help": "",
+      "disabled": "停用",
+      "coal": "煤炭",
+      "copper": "銅",
+      "aluminum": "鋁"
+    }
+  },
+  "IslandRanch": {
+    "_info": {
+      "name": "悠悠牧場",
+      "help": "需先準備足夠飼料"
+    },
+    "Ranch": {
+      "name": "自動分派",
+      "help": "",
+      "disabled": "停用",
+      "enabled": "啟用"
     }
   },
   "Daily": {
