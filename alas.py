@@ -243,8 +243,9 @@ class AzurLaneAutoScript:
         PrivateQuarters(config=self.config, device=self.device).run()
 
     def island_post_manage(self):
-        from module.island.post_manage import IslandPostManage
-        IslandPostManage(config=self.config, device=self.device).run()
+        # from module.island.post_manage import IslandPostManage
+        # IslandPostManage(config=self.config, device=self.device).run()
+        pass
 
     def daily(self):
         from module.daily.daily import Daily
