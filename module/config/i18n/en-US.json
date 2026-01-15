@@ -194,10 +194,6 @@
       "name": "Private Quarters",
       "help": ""
     },
-    "IslandPostManage": {
-      "name": "Island Post Manage",
-      "help": ""
-    },
     "OpsiGeneral": {
       "name": "OpSi General",
       "help": "Ensure the following settings in Azur Lane:\nReduce TB Guidance: On\nAuto use items during Auto Search: On\nAuto Mode in secured zones: Off\nStory Autoplay: Enabled\nText Auto-Scroll Speed: Very Fast"

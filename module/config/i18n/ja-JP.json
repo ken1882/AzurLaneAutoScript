@@ -194,10 +194,6 @@
       "name": "Task.PrivateQuarters.name",
       "help": "Task.PrivateQuarters.help"
     },
-    "IslandPostManage": {
-      "name": "離島一括管理",
-      "help": ""
-    },
     "OpsiGeneral": {
       "name": "一般設定",
       "help": ""

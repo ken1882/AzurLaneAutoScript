@@ -194,10 +194,6 @@
       "name": "宿舍计划",
       "help": ""
     },
-    "IslandPostManage": {
-      "name": "离岛配置管理",
-      "help": ""
-    },
     "OpsiGeneral": {
       "name": "通用设置",
       "help": ""

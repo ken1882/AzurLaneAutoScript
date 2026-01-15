@@ -343,7 +343,7 @@ class GeneratedConfig:
     # Group `IslandPostManage`
     IslandPostManage_MineProduction = 1230
     IslandPostManage_LumberProduction = 1230
-    IslandPostManage_Ranch = 'disabled'  # disabled, enabled
+    IslandPostManage_Ranch = 'enabled'  # disabled, enabled
 
     # Group `Daily`
     Daily_UseDailySkip = True

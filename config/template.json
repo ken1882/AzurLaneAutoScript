@@ -1630,24 +1630,6 @@
       "Storage": {}
     }
   },
-  "IslandPostManage": {
-    "Scheduler": {
-      "Enable": false,
-      "NextRun": "2020-01-01 00:00:00",
-      "Command": "IslandPostManage",
-      "SuccessInterval": 0,
-      "FailureInterval": 120,
-      "ServerUpdate": "00:00"
-    },
-    "IslandPostManage": {
-      "MineProduction": 1230,
-      "LumberProduction": 1230,
-      "Ranch": "disabled"
-    },
-    "Storage": {
-      "Storage": {}
-    }
-  },
   "OpsiGeneral": {
     "OpsiGeneral": {
       "UseLogger": true,
