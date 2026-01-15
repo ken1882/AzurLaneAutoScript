@@ -278,16 +278,16 @@ page_dormmenu.link(button=DORMMENU_GOTO_PRIVATE_QUARTERS, destination=page_priva
 page_private_quarters.link(button=PQ_GOTO_MAIN, destination=page_main)
 
 # Island
-page_island = Page(ISLAND_CHECK)
-page_island_management = Page(ISLAND_MANAGEMENT_CHECK)
-page_island_postmanage = Page(ISLAND_POSTMANAGE_CHECK)
-page_island_production = Page(ISLAND_PRODUCT_SEL_CHECK)
-page_dormmenu.link(button=DORMMENU_GOTO_ISLAND, destination=page_island)
-page_island.link(button=ISLAND_GOTO_MANAGEMENT, destination=page_island_management)
-page_island_management.link(button=ISLAND_GOTO_MAIN, destination=page_main)
-page_island_management.link(button=ISLAND_MANAGEMENT_GOTO_POSTMANAGE, destination=page_island_postmanage)
-page_island_postmanage.link(button=ISLAND_POSTMANAGE_GOTO_MANAGEMENT, destination=page_island_management)
-page_island_production.link(button=ISLAND_POSTMANAGE_GOTO_MANAGEMENT, destination=page_island_postmanage)
+# page_island = Page(ISLAND_CHECK)
+# page_island_management = Page(ISLAND_MANAGEMENT_CHECK)
+# page_island_postmanage = Page(ISLAND_POSTMANAGE_CHECK)
+# page_island_production = Page(ISLAND_PRODUCT_SEL_CHECK)
+# page_dormmenu.link(button=DORMMENU_GOTO_ISLAND, destination=page_island)
+# page_island.link(button=ISLAND_GOTO_MANAGEMENT, destination=page_island_management)
+# page_island_management.link(button=ISLAND_GOTO_MAIN, destination=page_main)
+# page_island_management.link(button=ISLAND_MANAGEMENT_GOTO_POSTMANAGE, destination=page_island_postmanage)
+# page_island_postmanage.link(button=ISLAND_POSTMANAGE_GOTO_MANAGEMENT, destination=page_island_management)
+# page_island_production.link(button=ISLAND_POSTMANAGE_GOTO_MANAGEMENT, destination=page_island_postmanage)
 
 # Game room & choose game
 page_game_room = Page(GAME_ROOM_CHECK)
