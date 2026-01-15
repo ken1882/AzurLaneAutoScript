@@ -145,7 +145,7 @@ class PrivateQuarters(PQInteract, PQShop):
         # Interact with target if enabled
         if target_interact:
             # Pull count here, exit run if = 0
-            count = self._pq_get_daily_count(retry=3)
+            count = 3 #self._pq_get_daily_count(retry=3)
             if count == 0:
                 logger.info('Daily intimacy count exhausted, exit subtask')
                 return
