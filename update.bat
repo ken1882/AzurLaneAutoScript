@@ -1,4 +1,4 @@
 git fetch origin
-git merge origin/master
-git push
+git merge --no-ff origin/master
+git push self master
 python gui.py

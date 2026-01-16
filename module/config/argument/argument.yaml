@@ -589,12 +589,15 @@ PrivateQuarters:
     TargetShip:
       value: anchorage
       option: [ anchorage, noshiro, sirius, new_jersey, taihou, aegir ]
+<<<<<<< HEAD
 IslandPostManage:
   MineProduction: "1230"
   LumberProduction: "1230"
   Ranch:
     value: enabled
     option: [ disabled, enabled ]
+=======
+>>>>>>> origin/master
 # ==================== Daily ====================
 
 Daily:
