@@ -10,8 +10,8 @@ class OpsiHazard1Leveling(OSMap):
             OpsiGeneral_DoRandomMapEvent=True,
             OpsiGeneral_AkashiShopFilter='ActionPoint',
         )
-        if not self.config.is_task_enabled('OpsiMeowfficerFarming'):
-            self.config.cross_set(keys='OpsiMeowfficerFarming.Scheduler.Enable', value=True)
+        # if not self.config.is_task_enabled('OpsiMeowfficerFarming'):
+        #     self.config.cross_set(keys='OpsiMeowfficerFarming.Scheduler.Enable', value=True)
         while True:
             # Limited action point preserve of hazard 1 to 200
             self.config.OS_ACTION_POINT_PRESERVE = 200
