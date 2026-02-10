@@ -22,13 +22,13 @@ class OpsiHazard1Leveling(OSMap):
                 self.config.OS_ACTION_POINT_PRESERVE = 0
             logger.attr('OS_ACTION_POINT_PRESERVE', self.config.OS_ACTION_POINT_PRESERVE)
 
-            if self.get_yellow_coins() < self.config.OS_CL1_YELLOW_COINS_PRESERVE:
-                logger.info(f'Reach the limit of yellow coins, preserve={self.config.OS_CL1_YELLOW_COINS_PRESERVE}')
-                with self.config.multi_set():
-                    self.config.task_delay(server_update=True)
-                    if not self.is_in_opsi_explore():
-                        self.config.task_call('OpsiMeowfficerFarming')
-                self.config.task_stop()
+            # if self.get_yellow_coins() < self.config.OS_CL1_YELLOW_COINS_PRESERVE:
+            #     logger.info(f'Reach the limit of yellow coins, preserve={self.config.OS_CL1_YELLOW_COINS_PRESERVE}')
+            #     with self.config.multi_set():
+            #         self.config.task_delay(server_update=True)
+            #         if not self.is_in_opsi_explore():
+            #             self.config.task_call('OpsiMeowfficerFarming')
+            #     self.config.task_stop()
 
             self.get_current_zone()
 
@@ -38,13 +38,12 @@ class OpsiHazard1Leveling(OSMap):
             if self.config.OpsiGeneral_BuyActionPointLimit > 0:
                 keep_current_ap = False
             self.action_point_set(cost=70, keep_current_ap=keep_current_ap, check_rest_ap=True)
-            #if self._action_point_total >= 3000:
-            if self._action_point_total >= 10**8:
-                with self.config.multi_set():
-                    self.config.task_delay(server_update=True)
-                    if not self.is_in_opsi_explore():
-                        self.config.task_call('OpsiMeowfficerFarming')
-                self.config.task_stop()
+            # if self._action_point_total >= 3000:
+            #     with self.config.multi_set():
+            #         self.config.task_delay(server_update=True)
+            #         if not self.is_in_opsi_explore():
+            #             self.config.task_call('OpsiMeowfficerFarming')
+            #     self.config.task_stop()
 
             if self.config.OpsiHazard1Leveling_TargetZone != 0:
                 zone = self.config.OpsiHazard1Leveling_TargetZone
