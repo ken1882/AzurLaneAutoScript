@@ -21,6 +21,7 @@ MASK_DORM = Mask(file='./assets/mask/MASK_DORM.png')
 DORM_CAMERA_SWIPE = (300, 250)
 DORM_CAMERA_RANDOM = (-20, -20, 20, 20)
 OCR_SLOT = DigitCounter(OCR_DORM_SLOT, letter=(107, 89, 82), threshold=128, name='OCR_DORM_SLOT')
+OCR_FUEL_COST = Digit(OCR_FUEL_COST, letter=(107, 89, 90), threshold=128, name='OCR_DORM_FUEL_COST')
 BTN_BUY_CURRY = Button(
     area={
         'cn': (862, 370, 892, 400),
@@ -404,15 +405,20 @@ class RewardDorm(UI):
 
     def buy_food(self):
         """
-        Buy 10 navy curries, should only be here when fuel is maxed.
+        Buy 11 navy curries, should only be here when fuel is maxed.
         """
         while 1:
             self.device.screenshot()
-            if self.appear(FOOD_BUY_COST):
+            cost = OCR_FUEL_COST.ocr(self.device.image)
+            logger.info(f'Current dorm food fuel cost: {cost}')
+            if self.appear(FOOD_BUY_COST) and cost > 100:
                 self.appear_then_click(FOOD_BUY_CONFIRM)
                 break
-            elif self.appear(FOOD_BUY_ADD_10):
+            elif self.appear(FOOD_BUY_ADD_10) and cost < 100:
                 self.device.click(FOOD_BUY_ADD_10)
+            elif cost > 1000:
+                logger.warning('Incorrect cost for dorm food, abort')
+                break
             else:
                 self.device.click(BTN_BUY_CURRY)
 
