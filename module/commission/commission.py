@@ -587,15 +587,12 @@ class RewardCommission(UI, InfoHandler):
                     # click_timer.reset()
                     continue
                 if self.appear(FUEL_MAXED):
-                    if self.config.SERVER in ['cn', 'en', 'tw']:
-                        pass # not supported yet
-                    else:
-                        logger.info("Fuel maxed, skip reward receive")
-                        self.config.cross_set('Dorm.Dorm.BuyFood', True)
-                        self.config.task_call('Dorm')
-                        self.config.task_delay(minute=1)
-                        self.config.task_stop()
-                        break
+                    logger.info("Fuel maxed, skip reward receive")
+                    self.config.cross_set('Dorm.Dorm.BuyFood', True)
+                    self.config.task_call('Dorm')
+                    self.config.task_delay(minute=1)
+                    self.config.task_stop()
+                    break
                 # Check GET_SHIP at last to handle random white background at page_main
                 for button in [GET_SHIP]:
                     if click_timer.reached() and self.appear(button, interval=1):
