@@ -586,7 +586,7 @@ class RewardCommission(UI, InfoHandler):
                     # no need to reset click_timer, just instant click REWARD_1
                     # click_timer.reset()
                     continue
-                if self.appear(FUEL_MAXED):
+                if self.appear(FUEL_MAXED, similarity=0.95):
                     logger.info("Fuel maxed, skip reward receive")
                     self.config.cross_set('Dorm.Dorm.BuyFood', True)
                     self.config.task_call('Dorm')
