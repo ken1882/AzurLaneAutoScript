@@ -47,16 +47,8 @@ class MetaDigitCounter(DigitCounter):
 class Meta(UI, MapEventHandler):
 
     def digit_ocr_point_and_check(self, button: Button, check_number: int):
-        if server.server != 'jp':
-            point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
-        else:
-            point_ocr = MetaDigitCounter(button, letter=(192, 192, 192), threshold=160, name='POINT_OCR')
+        point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
         point, _, total = point_ocr.ocr(self.device.image)
-        # try ocr bold font
-        if server.server == 'jp' and total > 2000:
-            logger.info('Try ocr bold font for META point')
-            point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
-            point, _, _ = point_ocr.ocr(self.device.image)
         if point >= check_number:
             return True
         return False
