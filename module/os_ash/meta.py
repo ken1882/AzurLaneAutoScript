@@ -47,8 +47,11 @@ class MetaDigitCounter(DigitCounter):
 class Meta(UI, MapEventHandler):
 
     def digit_ocr_point_and_check(self, button: Button, check_number: int):
-        point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
+        point_ocr = MetaDigitCounter(button, letter=(192, 192, 192), threshold=160, name='POINT_OCR')
         point, _, total = point_ocr.ocr(self.device.image)
+        if total > 1500:
+            point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
+            point, _, total = point_ocr.ocr(self.device.image)
         if point >= check_number:
             return True
         return False
@@ -371,6 +374,7 @@ class OpsiAshBeacon(Meta):
         In beacon or dossier:
             begin a new meta if needed, or back to meta main page
         """
+        logger.info("Begin meta attack")
         # Page meta main
         if self.appear(ASH_SHOWDOWN, offset=(30, 30), interval=2):
             # Beacon
@@ -387,6 +391,7 @@ class OpsiAshBeacon(Meta):
                     return True
                 else:
                     logger.info('None dossier has been selected')
+                logger.warning('No valid dossier found')
             return False
         # Page beacon
         elif self.appear(BEACON_LIST, offset=(20, 20), interval=2):
@@ -408,6 +413,7 @@ class OpsiAshBeacon(Meta):
             return True
         # UnKnown Page
         else:
+            logger.warning('Unknown meta page')
             return True
 
     def _check_beacon_point(self) -> bool:
