@@ -47,11 +47,11 @@ class MetaDigitCounter(DigitCounter):
 class Meta(UI, MapEventHandler):
 
     def digit_ocr_point_and_check(self, button: Button, check_number: int):
-        point_ocr = MetaDigitCounter(button, letter=(192, 192, 192), threshold=160, name='POINT_OCR')
+        # point_ocr = MetaDigitCounter(button, letter=(192, 192, 192), threshold=160, name='POINT_OCR')
+        # point, _, total = point_ocr.ocr(self.device.image)
+        # if total > 1500:
+        point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
         point, _, total = point_ocr.ocr(self.device.image)
-        if total > 1500:
-            point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
-            point, _, total = point_ocr.ocr(self.device.image)
         if point >= check_number:
             return True
         return False
@@ -398,6 +398,9 @@ class OpsiAshBeacon(Meta):
             if self._check_beacon_point():
                 self.device.click(META_BEGIN_ENTRANCE)
                 logger.info('Begin a beacon')
+            else:
+                logger.info('Insufficient points')
+                return False
             return True
         # Page dossier
         elif _server_support() \
@@ -417,12 +420,14 @@ class OpsiAshBeacon(Meta):
             return True
 
     def _check_beacon_point(self) -> bool:
+        logger.info('Check beacon point')
         if self.appear(META_BEACON_FLAG, offset=(180, 20)):
             META_BEACON_DATA.load_offset(META_BEACON_FLAG)
             return self.digit_ocr_point_and_check(META_BEACON_DATA.button, 100)
         return False
 
     def _check_dossier_point(self) -> bool:
+        logger.info('Check dossier point')
         if self.appear(META_DOSSIER_FLAG, offset=(180, 20)):
             META_DOSSIER_DATA.load_offset(META_DOSSIER_FLAG)
             return self.digit_ocr_point_and_check(META_DOSSIER_DATA.button, 100)
