@@ -41,15 +41,15 @@ class MetaDigitCounter(DigitCounter):
         if re.match(r'^[0123]3$', result):
             result = f'{result[0]}/{result[1]}'
 
+        if result.startswith('1/'):
+            result = '1' + result[2:]
+
         return result
 
 
 class Meta(UI, MapEventHandler):
 
     def digit_ocr_point_and_check(self, button: Button, check_number: int):
-        # point_ocr = MetaDigitCounter(button, letter=(192, 192, 192), threshold=160, name='POINT_OCR')
-        # point, _, total = point_ocr.ocr(self.device.image)
-        # if total > 1500:
         point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
         point, _, total = point_ocr.ocr(self.device.image)
         if point >= check_number:
