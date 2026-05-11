@@ -21,7 +21,6 @@ MASK_DORM = Mask(file='./assets/mask/MASK_DORM.png')
 DORM_CAMERA_SWIPE = (300, 250)
 DORM_CAMERA_RANDOM = (-20, -20, 20, 20)
 OCR_SLOT = DigitCounter(OCR_DORM_SLOT, letter=(107, 89, 82), threshold=128, name='OCR_DORM_SLOT')
-<<<<<<< HEAD
 OCR_FUEL_COST = Digit(OCR_FUEL_COST, letter=(107, 89, 90), threshold=128, name='OCR_DORM_FUEL_COST')
 BTN_BUY_CURRY = Button(
     area={
@@ -38,10 +37,8 @@ BTN_BUY_CURRY = Button(
     },
     color={'cn': (1, 1, 1), 'en': (1, 1, 1), 'jp': (1, 1, 1), 'tw': (1, 1, 1)}
 )
-=======
 OCR_BUY_FOOD_AMOUNT = Digit(OCR_DORM_BUY_FOOD_AMOUNT, letter=(96, 96, 100), threshold=128, name='OCR_DORM_BUY_FOOD_AMOUNT')
 
->>>>>>> origin/master
 
 class OcrDormFood(DigitCounter):
     def pre_process(self, image):
@@ -471,9 +468,6 @@ class RewardDorm(UI):
                 self.interval_clear(DORM_CHECK)
                 continue
 
-<<<<<<< HEAD
-    def dorm_run(self, feed=True, collect=True, buy_furniture=False, buy_food=False):
-=======
     def dorm_buy_food_enter(self):
         """
         Pages:
@@ -545,7 +539,6 @@ class RewardDorm(UI):
         self.dorm_feed_quit()
 
     def dorm_run(self, feed=True, collect=True, buy_furniture=False):
->>>>>>> origin/master
         """
         Pages:
             in: Any page
