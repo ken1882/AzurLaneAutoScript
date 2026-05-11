@@ -544,7 +544,7 @@ class RewardDorm(UI):
             in: Any page
             out: page_dorm
         """
-        if not feed and not collect and not buy_furniture and not buy_food:
+        if not feed and not collect and not buy_furniture:
             return
 
         self.ui_ensure(page_dormmenu)
@@ -654,15 +654,13 @@ class RewardDorm(UI):
             out: page_dorm
         """
         if not self.config.Dorm_Feed and not self.config.Dorm_Collect \
-                and not self.config.BuyFurniture_Enable \
-                and not self.config.Dorm_BuyFood:
+                and not self.config.BuyFurniture_Enable:
             self.config.Scheduler_Enable = False
             self.config.task_stop()
 
         self.dorm_run(feed=self.config.Dorm_Feed,
                       collect=self.config.Dorm_Collect,
-                      buy_furniture=self.config.BuyFurniture_Enable,
-                      buy_food=self.config.Dorm_BuyFood)
+                      buy_furniture=self.config.BuyFurniture_Enable)
 
         # Scheduler
         ships = self.get_dorm_ship_amount()
