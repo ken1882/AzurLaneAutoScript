@@ -559,15 +559,10 @@ class RewardDorm(UI):
 
         # Feed first to handle DORM_INFO
         # DORM_INFO may cover dorm coins and loves
-        if feed or buy_food:
+        if feed :
             logger.hr('Dorm feed', level=1)
             self.dorm_feed_enter()
-            if buy_food:
-                logger.hr('Dorm buy food', level=2)
-                self.buy_food()
-                self.config.Dorm_BuyFood = False
-            if feed:
-                self.dorm_feed()
+            self.dorm_feed()
             self.dorm_feed_quit()
 
         if collect:
