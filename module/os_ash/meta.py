@@ -56,7 +56,7 @@ class Meta(UI, MapEventHandler):
     def digit_ocr_point_and_check(self, button: Button, check_number: int):
         point_ocr = MetaDigitCounter(button, letter=(235, 235, 235), threshold=160, name='POINT_OCR')
         point, _, total = point_ocr.ocr(self.device.image)
-        if point >= check_number:
+        if point >= total or point >= check_number:
             return True
         return False
 
