@@ -9,7 +9,7 @@ from module.logger import logger
 
 logger.info('Loading OCR dependencies')
 from cnocr import CnOcr
-from cnocr.cn_ocr import (data_dir, gen_network, load_module,
+from cnocr.cn_ocr import (check_model_name, data_dir, gen_network, load_module,
                           read_charset)
 from cnocr.fit.ctc_metrics import CtcMetrics
 from cnocr.hyperparams.cn_hyperparams import CnHyperparams as Hyperparams
@@ -62,7 +62,7 @@ class AlOcr(CnOcr):
         :param context: 'cpu', or 'gpu'。表明预测时是使用CPU还是GPU。默认为CPU。
         :param name: 正在初始化的这个实例名称。如果需要同时初始化多个实例，需要为不同的实例指定不同的名称。
         """
-        # check_model_name(model_name)
+        check_model_name(model_name)
         self._model_name = model_name
         self._model_file_prefix = '{}-{}'.format(self.MODEL_FILE_PREFIX, model_name)
         self._model_epoch = model_epoch
