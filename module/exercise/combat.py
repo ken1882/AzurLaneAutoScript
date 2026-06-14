@@ -72,7 +72,6 @@ class ExerciseCombat(HpDaemon, OpponentChoose, ExerciseEquipment, Combat):
                     success = True
                     end = True
                     battle_status_detected = True
-                    continue
                 if self.appear(BATTLE_STATUS_D, interval=1):
                     logger.info(f'{BATTLE_STATUS_D} -> {CLICK_SAFE_AREA}')
                     self.device.click(CLICK_SAFE_AREA)
@@ -80,6 +79,9 @@ class ExerciseCombat(HpDaemon, OpponentChoose, ExerciseEquipment, Combat):
                     end = True
                     battle_status_detected = True
                     logger.info("Exercise LOST")
+                if success and end and battle_status_detected:
+                    self.device.sleep(1)
+                    self.device.click(CLICK_SAFE_AREA)
                     continue
 
             # Only handle GET_ITEMS_1 after battle status
